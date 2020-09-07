@@ -16,7 +16,7 @@ spec:
         app: loganalyticssource
     spec:
       containers:
-      - image: satishgummadelli/loganalytics:0.4
+      - image: satishgummadelli/loganalytics:0.9
         imagePullPolicy: IfNotPresent
         name: loganalytics
         ports:

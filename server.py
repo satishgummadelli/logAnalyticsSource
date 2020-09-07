@@ -18,12 +18,13 @@ def random_chars(size, chars=ascii_uppercase):
     while True:
         yield ''.join(islice(selection, size))
 
+
 @app.route('/events',methods=["GET"])
 def get_event():
-    x = (random.randint(1, 5))
     random_gen = random_chars(6000)
+    events_json={'tables':{'name':'PrimaryResult','columns':[{'name':'time','type':'string'},{'name':'data','type':'string'}],'rows':[]}}
     current_date_time = datetime.now().isoformat()
-    for i in range(x):
+    for i in range(int(os.environ["NUMBEROFROWSPEREVENT"])):
         events_json["tables"]["rows"].append({current_date_time:next(random_gen)}) 
     return jsonify(events_json), 200
 
