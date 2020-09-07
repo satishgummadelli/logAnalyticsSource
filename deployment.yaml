@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: loganalyticssource
+  name: loganalyticssource
+  namespace: ddl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: loganalyticssource
+  template:
+    metadata:
+      labels:
+        app: loganalyticssource
+    spec:
+      containers:
+      - image: satishgummadelli/loganalytics:0.4
+        imagePullPolicy: IfNotPresent
+        name: loganalytics
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+
