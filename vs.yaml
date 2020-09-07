@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: loganalytics-api
+  namespace: ddl
+spec:
+  gateways:
+  - ddl-gateway
+  hosts:
+  - loganalytics.gdn.network
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: loganalyticssource
+        port:
+          number: 80

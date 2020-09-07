@@ -25,6 +25,6 @@ def get_event():
     events_json={'tables':{'name':'PrimaryResult','columns':[{'name':'time','type':'string'},{'name':'data','type':'string'}],'rows':[]}}
     current_date_time = datetime.now().isoformat()
     for i in range(int(os.environ["NUMBEROFROWSPEREVENT"])):
-        events_json["tables"]["rows"].append({current_date_time:next(random_gen)}) 
+        events_json["tables"]["rows"].append([current_date_time,next(random_gen)]) 
     return jsonify(events_json), 200
 
