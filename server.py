@@ -19,10 +19,10 @@ def random_chars(size, chars=ascii_uppercase):
         yield ''.join(islice(selection, size))
 
 
-@app.route('/events',methods=["GET"])
+@app.route('/events',methods=["POST"])
 def get_event():
     random_gen = random_chars(6000)
-    events_json={'tables':[{'name':'PrimaryResult','columns':[{'name':'time','type':'string'},{'name':'data','type':'string'}],'rows':[]}]}
+    events_json={'tables':[{'name':'PrimaryResult','columns':[{'name':'TimeGenerated','type':'string'},{'name':'data','type':'string'}],'rows':[]}]}
     current_date_time = datetime.now().isoformat()
     for i in range(int(os.environ["NUMBEROFROWSPEREVENT"])):
         events_json["tables"][0]["rows"].append([current_date_time,next(random_gen)]) 
