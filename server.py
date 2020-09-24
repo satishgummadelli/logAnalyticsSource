@@ -19,7 +19,7 @@ def random_chars(size, chars=ascii_uppercase):
         yield ''.join(islice(selection, size))
 
 
-@app.route('/events',methods=["POST"])
+@app.route('/events',methods=["GET"])
 def get_event():
     random_gen = random_chars(6000)
     events_json={'tables':[{'name':'PrimaryResult','columns':[{'name':'TimeGenerated','type':'string'},{'name':'data','type':'string'}],'rows':[]}]}
